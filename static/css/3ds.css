@@ -1,0 +1,19 @@
+body{
+  font-size:200%;
+}
+input {
+  font-size:100%;
+}
+
+div#container img {
+    max-width: 600px;
+    max-height: 400px;
+}
+
+.td_vertical_align_middle.td_vertical_align_middle {
+  vertical-align: middle;
+}
+
+#wait_msg {
+ display: none;
+}

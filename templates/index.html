@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+  
+<div style="text-align: center;"　id="body">
+  <h1>Repaint your picture in the style of your favorite artist!</h1>
+  <div class="container">
+    <div style="width: 1024px; margin:0 auto; text-align: center; margin-bottom: 10px;">
+      <div class="juxtapose juxtapose-0" id="compare" data-makeresponsive="true"></div>
+    </div>
+    <form  id="uploadForm" class="dropzone" method="post" enctype="multipart/form-data">
+      <div class="btn-group"  role="group">
+        <p>CHOOSE A PICTURE HERE! (only JPG, PNG or GIF)</p>
+        <input id="id_input_pic" name="input_pic" type="file">
+        <br>
+        <p>CHOOSE A STYLE HERE! (only JPG, PNG or GIF)</p>
+        <input id="id_input_style" name="input_style" type="file">
+        <br>
+        <p>Customize</p>
+        <label class="small">Number of layers:</label>
+        <input type="number" name="num" class="span3" id="num" value="8">
+        <br>
+        <br>
+        <input type="submit" value="Convert Your Picture!" id="upload">
+      </div>
+    </form>
+    <span id="result">
+    <br>
+    {% if message %}
+    <p class="text-danger" >{{ message }}</p>
+    {% endif %}
+    {% if files %}
+    <div class="btn-group"  role="group">
+    <h1 class="text-success"　style="text-align: center;">THESE ARE CONVERTED PICTURES!</h1>
+    <table cellpadding="0" cellspacing="0"><tbody>
+    <tr>
+      {% for file in files %}
+         <td class="td_vertical_align_middle"><img src="{{ file.url }}"  style = "max-width: 300px; max-height: 300px;" alt="output" id="output" class="img-responsive">
+          <a href="{{ file.url }}"> {{ file.file_name }}</a>
+         <br>
+         </td>
+        {% if file.flag %}
+          </tr><tr>
+        {% endif %}
+      {% endfor %}
+    </tr>
+    </tbody></table>
+    </div>
+    {% endif %}
+    </span>
+  </div>
+</div>
+{% endblock %}
